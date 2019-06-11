@@ -1,0 +1,27 @@
+.events {
+    margin-left: 1%;
+}
+
+.desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+}
+
+.mediaContainer {
+    max-height: 165px;
+    overflow-x: hidden;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.eventRow {
+    margin-bottom: 0.85%;
+}
+
+.deleteEvent {
+    text-align: right;
+}
