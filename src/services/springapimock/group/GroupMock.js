@@ -1,30 +1,32 @@
-import jsonGroupData from '../files/groups.json';
+import jsonGroupDataFromApp from '../files/groups.json';
 import Group from '../../../model/Group';
 
 export default class GroupMock {
 
     data = null;
+    mockServerUrl = null;
     array = [];
 
     constructor(){
-        this.data = jsonGroupData;
+        this.data = jsonGroupDataFromApp;
+        this.mockServerUrl = "/jsonservergroups"
     }
 
-    generate(){
+    async generate(){
         let msgs = []
-        
-        this.data.map(( groupData ) => {
-            this.array.push(new Group(groupData));
-            msgs.push("group:"+groupData.id+" mocked succesfully");
-            return msgs;
+        await fetch(this.mockServerUrl)
+            .then(async (response)=>{
+            this.data = response.ok ? await response.json().then((res) => res) : this.data;  
+            this.data.map(( groupData ) => {
+                this.array.push(groupData);
+                msgs.push("group:"+groupData.id+" mocked succesfully");
+                return msgs;
+            });
+            msgs.forEach(msg => {
+                console.log(msg);
+                return 0;
+            });
         });
-
-        msgs.forEach(msg => {
-            console.log(msg);
-            return 0;
-        });
-
         return this.array;
     }
-
 }

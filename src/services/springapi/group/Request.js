@@ -1,7 +1,7 @@
 
 import GroupMock from '../../springapimock/group/GroupMock';
 
-import request from '';
+
 
 export default class Requests {
 
@@ -13,7 +13,7 @@ export default class Requests {
     constructor(){
         this.getAllGroupApiEndPoint = '/api/groups';
         this.postSingleGroup = '/api/addGroup';
-        this.succesMsgResponse = 'Successfuly connected to spring server';
+        this.succesMsgResponse = 'Successfuly connected to spring server or json server';
         this.errorMsgResponse = 'Server is not responding';
     }
 
@@ -21,9 +21,10 @@ export default class Requests {
         let data = null;
         await fetch(this.getAllGroupApiEndPoint)
             .then(async (response)=>{
-            data = response.ok ? await response.json().then((res) => res) : new GroupMock().generate(); 
+            data = response.ok ? await response.json().then((res) => res) : await new GroupMock().generate(); 
             data ? console.log(this.succesMsgResponse) : console.log(this.errorMsgResponse);     
         });
+        console.log(data);
         return data;
     }
 
