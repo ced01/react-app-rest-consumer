@@ -12,7 +12,7 @@
     "react-bootstrap-table": "^4.3.1",
     "react-cookie": "^3.0.8",
     "react-dom": "^16.8.4",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^7.5.2",
     "react-scripts": "^3.0.1",
     "react-vis": "^1.11.7",
     "reactstrap": "^7.1.0",
